@@ -18,8 +18,9 @@ anti_alias = False  # smooth text
 text_sur = test_font.render(text, anti_alias, 'Black')
 
 # import snail image
-snail_surface = pygame.image.load('graphics/snail/snail1.png').convert_alpha()
+snail_surface = pygame.image.load('graphics/snail/snail1.png')
 snail_x_pos = 600
+snail_rectangle = snail_surface.get_rect(bottomright = (600, 300))
 
 while True:
 
@@ -32,11 +33,12 @@ while True:
     screen.blit(ground_surface.convert(), (0, 300))
     screen.blit(text_sur, (10, 10))
     screen.blit(player_surface.convert_alpha(), player_rectangle)
+    screen.blit(snail_surface.convert_alpha(), snail_rectangle)
 
-    screen.blit(snail_surface, (snail_x_pos, 270))
+    snail_rectangle.x -= 2
+    if snail_rectangle.right < 0:
+        snail_rectangle.left = 800
 
-    snail_x_pos -= 2  # make snail move to the left
-    if snail_x_pos < -100: snail_x_pos = 800
 
     pygame.display.update()
     clock.tick(60)
