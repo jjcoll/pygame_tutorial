@@ -17,6 +17,9 @@ text = 'My Game'
 anti_alias = False  # smooth text
 text_sur = test_font.render(text, anti_alias, 'Black')
 
+text_sur_2 = test_font.render('You have lost', anti_alias, 'Red')
+text_rect_2 = text_sur_2.get_rect(center = (400, 200))
+
 # import snail image
 snail_surface = pygame.image.load('graphics/snail/snail1.png')
 snail_x_pos = 600
@@ -35,9 +38,13 @@ while True:
     screen.blit(player_surface.convert_alpha(), player_rectangle)
     screen.blit(snail_surface.convert_alpha(), snail_rectangle)
 
-    snail_rectangle.x -= 2
-    if snail_rectangle.right < 0:
-        snail_rectangle.left = 800
+
+    if not snail_rectangle.colliderect(player_rectangle):
+        snail_rectangle.x -= 2
+        if snail_rectangle.right < 0:
+            snail_rectangle.left = 800
+    else:
+        screen.blit(text_sur_2, text_rect_2)
 
 
     pygame.display.update()
