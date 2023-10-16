@@ -1,6 +1,7 @@
 import pygame
 from sys import exit
 from surfaces import *
+from rectangles import *
 
 pygame.init()
 width = 800
@@ -27,17 +28,15 @@ while True:
             pygame.quit()
             exit()
 
-
-    screen.blit(sky_surface, (0, 0))
-    screen.blit(ground_surface, (0, 300))
+    screen.blit(sky_surface.convert(), (0, 0))
+    screen.blit(ground_surface.convert(), (0, 300))
     screen.blit(text_sur, (10, 10))
-
+    screen.blit(player_surface.convert_alpha(), player_rectangle)
 
     screen.blit(snail_surface, (snail_x_pos, 270))
 
     snail_x_pos -= 2  # make snail move to the left
-    if snail_x_pos < -100:
-        snail_x_pos = 800
+    if snail_x_pos < -100: snail_x_pos = 800
 
     pygame.display.update()
     clock.tick(60)
