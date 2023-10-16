@@ -17,7 +17,7 @@ anti_alias = False  # smooth text
 text_sur = test_font.render(text, anti_alias, 'Black')
 
 # import snail image
-snail_surface = pygame.image.load('graphics/snail/snail1.png')
+snail_surface = pygame.image.load('graphics/snail/snail1.png').convert()
 snail_x_pos = 600
 
 while True:
