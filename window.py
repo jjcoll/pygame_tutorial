@@ -1,5 +1,6 @@
 import pygame
 from sys import exit
+from displaying_images import test_surface
 
 pygame.init()  # starts pygame engine
 
@@ -19,6 +20,8 @@ while True:
             exit()  # as we close pygame, we must close while loop
     # draw all our elements
     # update everything
+
+    screen.blit(test_surface, (200, 100))  # put one surface in another surface
 
     pygame.display.update()  # updates display surface
     clock.tick(60)  # this tells python that while loop should not run faster, than 60 times per second
