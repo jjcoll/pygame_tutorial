@@ -12,3 +12,5 @@ Imagine you placing several surface on the display surface
 
 test_surface = pygame.Surface((100, 200))
 test_surface.fill('red')
+
+test_surface_img = pygame.image.load('graphics/Sky.png')
